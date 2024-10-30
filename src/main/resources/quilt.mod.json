@@ -2,24 +2,24 @@
 	"schema_version": 1,
 	"quilt_loader": {
 		"group": "${group}",
-		"id": "example_mod",
+		"id": "randomgravity",
 		"version": "${version}",
 		"metadata": {
-			"name": "Mod Name",
+			"name": "RandomGravity",
 			"description": "A short description of your mod.",
 			"contributors": {
-				"Your name here": "Owner"
+				"Your name here": "DoodieMan"
 			},
 			"contact": {
 				"homepage": "https://example.com/",
 				"issues": "https://github.com/QuiltMC/quilt-template-mod/issues",
 				"sources": "https://github.com/QuiltMC/quilt-template-mod"
 			},
-			"icon": "assets/example_mod/icon.png"
+			"icon": "assets/randomgravity/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "com.example.example_mod.ExampleMod"
+			"init": "org.doodieman.randomgravity.Main"
 		},
 		"depends": [
 			{
@@ -36,5 +36,5 @@
 			}
 		]
 	},
-	"mixin": "example_mod.mixins.json"
+	"mixin": "randomgravity.mixins.json"
 }
