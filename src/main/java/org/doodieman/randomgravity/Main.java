@@ -2,8 +2,10 @@ package org.doodieman.randomgravity;
 
 import lombok.Getter;
 import net.minecraft.server.MinecraftServer;
+import org.doodieman.randomgravity.commands.GameCommand;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
+import org.quiltmc.qsl.command.api.CommandRegistrationCallback;
 import org.quiltmc.qsl.lifecycle.api.event.ServerLifecycleEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +32,13 @@ public class Main implements ModInitializer {
 		ServerLifecycleEvents.STARTING.register(server -> {
 			this.serverInstance = server;
 			this.game = new Game(server);
+		});
+
+		//Register game command
+		CommandRegistrationCallback.EVENT.register((dispatcher, buildContext, environment) -> {
+			if (environment.dedicated) {
+				GameCommand.register(dispatcher);
+			}
 		});
 	}
 

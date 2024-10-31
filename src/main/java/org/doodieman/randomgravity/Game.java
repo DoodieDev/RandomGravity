@@ -1,6 +1,7 @@
 package org.doodieman.randomgravity;
 
 import com.fusionflux.gravity_api.api.GravityChangerAPI;
+import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -14,8 +15,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Game {
 
 	long tickCounter = 0L;
-	@Setter
+	@Getter @Setter
 	int secondsLeft = 30;
+	@Getter @Setter
+	boolean timerActive = false;
 
 	final MinecraftServer server;
 
@@ -50,6 +53,7 @@ public class Game {
 
 	//Called every game tick
 	public void onTick(MinecraftServer server) {
+		if (!timerActive) return;
 		tickCounter++;
 		if (tickCounter >= 20L) {
 			tickCounter = 0L;
@@ -80,6 +84,7 @@ public class Game {
 			this.secondsLeft--;
 		}
 	}
+
 
 	public Direction getNextDirection(UUID uuid) {
 		if (!this.nextDirections.containsKey(uuid)) {
